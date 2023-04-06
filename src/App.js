@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { WeatherProvider } from './context/WeatherContext';
+import Container from 'react-bootstrap/Container'
+import SearchBox from './components/SearchBox';
+import CurrentDayWeather from './components/CurrentDayWeather';
+import WeeklyForecast from './components/WeeklyForecast';
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <WeatherProvider>
+      <Container className='pt-4'>
+
+        <SearchBox/>
+
+        <div className='d-flex flex-column justify-content-between'>
+          <CurrentDayWeather/>
+          <WeeklyForecast/>
+        </div>
+
+      </Container>
+    </WeatherProvider>
   );
 }
 
