@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Weather Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Created with React.js and Bootstrap, using GeoDB Cities API to fetch the city coordonates, and OpenWeather API for fetching the weather data.
 
-## Available Scripts
+# How To Run the App
 
-In the project directory, you can run:
+1.  Open a window terminal.
 
-### `npm start`
+2.  Change directory in the root folder of the project.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3.  Run the command:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+        docker-compose up
 
-### `npm test`
+4.  Open a browser and navigate to the localhost:3000
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5.  Enjoy the app.
 
-### `npm run build`
+## App Functionality
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+On this application you can search a city and get it's weather forecast up to 5 days, also you can add the cities to your favorites list which are saved on the localstorage.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The application is wrapped in a Context Provider, where I wrote all the logic and functionality for:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- fetching the city from the search input, using axios
+- fetching the weather data and storing it in a variable using the useState hook
+- add and remove cities from favorites, implementing local storage to save the cities
+- getting your current location in a useEffect hook and fetching the weather data of it
 
-### `npm run eject`
+## Description
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The app is made of 3 main components: Navbar, CurrentDayWeather, and WeeklyForecast, all of them inheriting the functions and variables from the context provider, used to fill in the DOM.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The Navbar includes the search bar and the favorites button, which open up a modal with a list of your favorites cities.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+CurrentDayWeather show's the city name, country, weather description, an image describing the weather, current grades, feels like, wind and humidity. Also a 24h forecast with the grades specific to the hour .
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+WeeklyForecast show's the next 5 days weather with an image describing it.
 
-## Learn More
+The application has a background theme for each weather condition: clear sky day, clear sky night, cloudy, raining, lightstorm, snowing, windy, etc
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Overall I really enjoyed making this project, it was a fun little one. Thank's Accesa for the opportunity!
