@@ -4,6 +4,8 @@ Created with React.js and Bootstrap, using GeoDB Cities API to fetch the city co
 
 # How To Run the App
 
+\*\*NOTE: you need to have docker installed in order to run the command, if you don't have it you can download it from here: https://www.docker.com/products/docker-desktop/
+
 1.  Open a window terminal.
 
 2.  Change directory in the root folder of the project.
