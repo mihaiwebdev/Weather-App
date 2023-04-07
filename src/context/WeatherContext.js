@@ -1,7 +1,8 @@
-import { createContext, useState, useCallback } from 'react'
+import { createContext, useState, useCallback, useEffect } from 'react'
 import axios from 'axios'
 import { GEO_LOCATION_OPTIONS, GEO_API_URL,
      WEATHER_API_KEY, WEATHER_API_URL } from '../api'
+import { toast } from 'react-toastify'
 
 
 const WeatherContext = createContext()
@@ -11,6 +12,8 @@ export const WeatherProvider =  ({children}) => {
     const [currentDayWeather, setCurrentDayWeather] = useState()
     const [currentDayForecast, setCurrentDayForecast] = useState()
     const [forecastFiveDays, setForecastFiveDays] = useState([])
+    const [favCities, setFavCities] = useState([])
+
 
     const setWeekDay = (day) => {
         switch(day){
@@ -93,13 +96,71 @@ export const WeatherProvider =  ({children}) => {
             setIsLoading(false)
         }
     }, [])
+
+
+    const handleFavorites = () => {
     
+        if (favCities) {
+            const alreadyExist = favCities.find(city => city.city === currentDayWeather.name)
+            
+            if (!alreadyExist) {
+
+                localStorage.setItem('favCities', JSON.stringify([...favCities, {
+                    'city': currentDayWeather.name,
+                    'coordonates': `${currentDayWeather.coord.lat} ${currentDayWeather.coord.lon}`,
+                }]))
+
+                toast.success('City added to favorites')
+
+            } else {
+                localStorage.setItem('favCities', JSON.stringify(
+                    [...favCities.filter(city => city.city !== currentDayWeather.name)]
+                ))
+
+                toast.info('City removed from favorites')
+            }
+
+        } else {
+            localStorage.setItem('favCities', JSON.stringify([{
+                'city': currentDayWeather.name,
+                'coordonates': `${currentDayWeather.coord.lat} ${currentDayWeather.coord.lon}`
+            }]))
+
+            toast.success('City saved to favorites')
+        }
+        
+        setFavCities(JSON.parse(localStorage.getItem('favCities')))
+        
+    }
+
+
+    useEffect(() => {
+
+        if (!currentDayWeather) {
+            
+            const curSuccess = async (pos) => {
+               await getWeather(pos.coords.latitude, pos.coords.longitude)
+            }
+            
+            const curError = (err) => {
+                console.log(err)
+            }
+    
+            navigator.geolocation.getCurrentPosition(curSuccess, curError, { })
+        }
+
+        setFavCities(JSON.parse(localStorage.getItem('favCities')))
+
+    }, [currentDayWeather, getWeather])
+ 
 
     return <WeatherContext.Provider value={{
         isLoading,
         currentDayWeather,
         currentDayForecast,
         forecastFiveDays,
+        favCities,
+        handleFavorites,
         getCities,
         getWeather,
     }}>

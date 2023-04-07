@@ -14,7 +14,7 @@ const WeeklyForecast = () => {
                     <div className='mt-3 week-forecast-row'>
                         {forecastFiveDays.map((day,idx) => (
                             <div key={idx} className='forecast-day-card py-5 mx-4 d-flex flex-column justify-content-center align-items-center text-center'>
-                                <small className='text-secondary fw-bold'>{day.weekDay} {day.day}.{day.month}</small>
+                                <small className='fw-bold'>{day.weekDay} {day.day}.{day.month}</small>
 
                                 <img width={90} height={90} className='my-3' src={require(`../icons/${day.icon}.png`)} alt="forecast-weather" />
 
