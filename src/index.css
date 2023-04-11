@@ -9,15 +9,17 @@ p {
   margin: 0;
   padding: 0;
 }
-
-body {
+#root {
+  position: relative;
   background: radial-gradient(closest-side, #331752, #201a2e, #13111f) no-repeat center center /cover;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   transition: all 0.5s ease;
+  min-height: 100vh;
+  z-index: 1;
 }
-body::after{
+#root::after {
   content: '';
   position: absolute;
   top: 0;
@@ -29,8 +31,8 @@ body::after{
   background-color: rgba(0, 0, 0, 0.4);
   z-index: -1;
 }
+
 .container {
-  min-height: 100vh;
   color: #fff;
 }
 .fa-heart {

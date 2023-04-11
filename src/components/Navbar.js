@@ -44,7 +44,7 @@ const Navbar = () => {
 
             <h1 className='logo-name text-center text-md-start'>Weather forecast</h1>
 
-            <div className='d-flex align-items-center'>
+            <div className='d-flex flex-column align-items-center flex-md-row'>
                 <Form onSubmit={handleSearch}>
                     <InputGroup className="my-3 my-lg-0">
                         <Form.Control

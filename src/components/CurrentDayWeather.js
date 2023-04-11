@@ -12,7 +12,7 @@ const CurrentDayWeather = () => {
     useEffect(() => {
 
         if (currentDayWeather) {
-            document.body.style.backgroundImage = `url(${require(`../icons/${currentDayWeather.weather[0].icon}-bg.jpg`)})`;
+            document.getElementById('root').style.backgroundImage = `url(${require(`../icons/${currentDayWeather.weather[0].icon}-bg.jpg`)})`;
         }
         
         if (currentDayWeather && favCities) {
