@@ -4,7 +4,23 @@ Created with React.js and Bootstrap, using GeoDB Cities API to fetch the city co
 
 # How To Run the App
 
-\*\*NOTE: you need to have docker installed in order to run the command, if you don't have it you can download it from here: https://www.docker.com/products/docker-desktop/
+## There are two ways you can run the app:
+
+### A. With Node.js:
+
+1.  Open a terminal window.
+
+2.  Navigate to the root folder of the project in the terminal using the `cd` comamand.
+
+3.  Run the command:
+
+        npm i
+
+4.  Then run the command:
+
+        npm start
+
+### B. With Docker:
 
 1.  Open docker application.
 
@@ -21,8 +37,6 @@ Created with React.js and Bootstrap, using GeoDB Cities API to fetch the city co
         docker-compose up
 
 6.  Open a browser and navigate to the localhost:3000
-
-7.  Enjoy the app.
 
 ## App Functionality
 
